@@ -10,6 +10,11 @@ module.exports = {
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
     },
+    migrations: {},
+    seed: {
+      directory: `${__dirname}/src/database/seeds`
+    }
+    
   },
 
   // staging: {
