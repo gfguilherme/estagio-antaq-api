@@ -1,16 +1,14 @@
 // Update with your config settings.
+require("dotenv").config();
 
 module.exports = {
   development: {
-    client: 'mssql',
+    client: "mssql",
     connection: {
-      server: 'localhost',
-      user: 'SA',
-      password: '1CUJzJBJ',
-      database: 'ANTAQ',
-      options: {
-        port: 1521,
-      },
+      server: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
     },
   },
 

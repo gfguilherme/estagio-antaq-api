@@ -1,12 +1,13 @@
-const knex = require('../database');
+const knex = require("../database");
 
 module.exports = {
   async read(req, res, next) {
     try {
-      const results = await knex('TBPorto');
+      const results = await knex("TBPorto");
 
       res.json(results);
-    } catch (error) {}
+    } catch (error) {
+      next(error);
+    }
   },
 };
-5;

@@ -1,6 +1,7 @@
-const express = require('express');
-const cors = require('cors');
-const routes = require('./routes');
+const express = require("express");
+const cors = require("cors");
+const routes = require("./routes");
+require("dotenv").config();
 
 const app = express();
 
@@ -10,7 +11,7 @@ app.use(routes);
 
 // Not Found error middleware
 app.use((req, res, next) => {
-  const error = new Error('Not found');
+  const error = new Error("Not found");
   error.status = 404;
   return next(error);
 });
@@ -22,4 +23,4 @@ app.use((error, req, res, next) => {
   console.log(error);
 });
 
-app.listen(3000, () => console.log('Servidor iniciado'));
+app.listen(3000, () => console.log("Servidor iniciado"));
