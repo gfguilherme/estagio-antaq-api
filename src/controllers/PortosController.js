@@ -1,14 +1,14 @@
-const knex = require('../database');
+const outorgaDB = require("../database").outorgaDB;
 
 module.exports = {
   async read(req, res, next) {
     try {
-      const results = await knex
-        .select('CDBiGrama', 'CDTriGrama', 'NOPorto')
-        .from('TBPorto')
+      const results = await outorgaDB
+        .select("CDBiGrama", "CDTriGrama", "NOPorto")
+        .from("TBPorto")
         .where({
-          CDBiGrama: 'BR',
-          TPPORTO: '1',
+          CDBiGrama: "BR",
+          TPPORTO: "1",
         });
 
       res.json(results);

@@ -1,12 +1,11 @@
-const knex = require("../database");
+const { arrendamentoV2DB } = require("../database");
 
 module.exports = {
   async read(req, res, next) {
     const { CDTrigrama } = req.body;
-    console.log(req.body);
 
     try {
-      const results = await knex
+      const results = await arrendamentoV2DB
         .select("IDContratoArrendamento")
         .from("TBContratoArrendamento")
         .where({
