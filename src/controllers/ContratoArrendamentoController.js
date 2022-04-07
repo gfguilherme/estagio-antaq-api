@@ -1,8 +1,8 @@
 const { arrendamentoV2DB } = require("../database");
 
 module.exports = {
-  async read(req, res, next) {
-    const { CDTrigrama } = req.body;
+  async listByPorto(req, res, next) {
+    const { CDTrigrama } = req.params;
 
     try {
       const results = await arrendamentoV2DB

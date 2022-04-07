@@ -19,7 +19,10 @@ routes.get("/", (req, res) => {
 });
 
 routes.get("/api/portos", PortosController.read);
-routes.get("/api/contratoarrendamento", ContratoArrendamentoController.read);
+routes.get(
+  "/api/contratoarrendamento/:CDTrigrama",
+  ContratoArrendamentoController.listByPorto
+);
 
 routes.get("/api/controlereidi", ControleREIDIController.read);
 routes.get("/api/analisereidi", AnaliseREIDIController.read);
