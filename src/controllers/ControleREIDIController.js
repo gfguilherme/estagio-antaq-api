@@ -26,7 +26,6 @@ module.exports = {
   async create(req, res, next) {
     try {
       const {
-        IDControleREIDI,
         IDContratoArrendamento,
         NRProcessoPrincipal,
         IDProtocoloSEI,
@@ -38,7 +37,6 @@ module.exports = {
       } = req.body;
 
       await extensaoControleDB("TBControleREIDI").insert({
-        IDControleREIDI,
         IDContratoArrendamento,
         NRProcessoPrincipal,
         IDProtocoloSEI,
@@ -50,7 +48,6 @@ module.exports = {
       });
 
       res.status(201).json({
-        IDControleREIDI,
         IDContratoArrendamento,
         NRProcessoPrincipal,
         IDProtocoloSEI,
