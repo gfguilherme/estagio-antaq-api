@@ -11,19 +11,9 @@ module.exports = {
     }
   },
 
-  async create(req, res, next){
+  async create(req, res, next) {
     try {
-      const { IDControleREIDI,
-        IDContratoArrendamento,
-        NRProcessoPrincipal,
-        IDProtocoloSEI,
-        DTProtocoloPedido,
-        VLInvestimentoProposto,
-        DSObservacoesSituacao,
-        NRProtocoloMINFRA,
-        NRCodigoMINFRA } = req.body
-
-      await extensaoControleDB('TBControleREIDI').insert({
+      const {
         IDControleREIDI,
         IDContratoArrendamento,
         NRProcessoPrincipal,
@@ -33,24 +23,49 @@ module.exports = {
         DSObservacoesSituacao,
         NRProtocoloMINFRA,
         NRCodigoMINFRA,
-      })
+      } = req.body;
 
+      await extensaoControleDB("TBControleREIDI").insert({
+        IDControleREIDI,
+        IDContratoArrendamento,
+        NRProcessoPrincipal,
+        IDProtocoloSEI,
+        DTProtocoloPedido,
+        VLInvestimentoProposto,
+        DSObservacoesSituacao,
+        NRProtocoloMINFRA,
+        NRCodigoMINFRA,
+      });
+
+      res
+        .status(201)
+        .json({
+          IDControleREIDI,
+          IDContratoArrendamento,
+          NRProcessoPrincipal,
+          IDProtocoloSEI,
+          DTProtocoloPedido,
+          VLInvestimentoProposto,
+          DSObservacoesSituacao,
+          NRProtocoloMINFRA,
+          NRCodigoMINFRA,
+        });
     } catch (error) {
       next(error);
     }
   },
 
-  async delete(req, res, next){
+  async delete(req, res, next) {
     try {
       const { IDControleREIDI } = req.params;
 
       await extensaoControleDB("TBControleREIDI")
-      .where({IDControleREIDI})
-      .del();
+        .where({ IDControleREIDI })
+        .del();
 
-      res.send();
+      res.status(200).json({message: `O REIDI de ID ${IDControleREIDI} foi excluído com sucesso`});
     } catch (error) {
       next(error);
     }
-  }
+  },
 };
