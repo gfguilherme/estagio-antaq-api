@@ -11,6 +11,18 @@ module.exports = {
     }
   },
 
+  async matchRows(req, res, next) {
+    try {
+      const results = await extensaoControleDB("TBControleREIDI").select(
+        "NRProcessoPrincipal"
+      );
+
+      res.status(200).json(results);
+    } catch (error) {
+      next(error);
+    }
+  },
+
   async create(req, res, next) {
     try {
       const {
@@ -70,7 +82,7 @@ module.exports = {
   },
   async update(req, res, next) {
     try {
-      const { IDControleREIDI } = req.params; 
+      const { IDControleREIDI } = req.params;
       const {
         DTProtocoloPedido,
         VLInvestimentoProposto,
@@ -89,15 +101,13 @@ module.exports = {
           NRCodigoMINFRA,
         });
 
-      res
-        .status(200)
-        .json({
-          DTProtocoloPedido,
-          VLInvestimentoProposto,
-          DSObservacoesSituacao,
-          NRProtocoloMINFRA,
-          NRCodigoMINFRA,
-        });
+      res.status(200).json({
+        DTProtocoloPedido,
+        VLInvestimentoProposto,
+        DSObservacoesSituacao,
+        NRProtocoloMINFRA,
+        NRCodigoMINFRA,
+      });
     } catch (error) {
       next(error);
     }
