@@ -18,14 +18,20 @@ routes.get("/", (req, res) => {
   }
 });
 
+// Portos
 routes.get("/api/portos", PortosController.read);
+
+// Contrato Arrendamento
 routes.get(
   "/api/contratoarrendamento/:CDTrigrama",
   ContratoArrendamentoController.listByPorto
 );
 
+
+// Controle REIDI
 routes.get("/api/controlereidi", ControleREIDIController.read);
 routes.post("/api/controlereidi", ControleREIDIController.create);
+routes.put("/api/controlereidi/:IDControleREIDI", ControleREIDIController.update)
 routes.delete("/api/controlereidi/:IDControleREIDI", ControleREIDIController.delete);
 
 
