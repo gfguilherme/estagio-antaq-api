@@ -6,10 +6,11 @@ module.exports = {
 
     try {
       const results = await arrendamentoV2DB
-        .select("IDContratoArrendamento")
+        .select('IDContratoArrendamento', 'CDContrato')
         .from("TBContratoArrendamento")
         .where({
           CDTrigrama,
+          "NRVersao": 1
         });
 
       res.json(results);
