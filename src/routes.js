@@ -25,6 +25,10 @@ routes.get(
 );
 
 routes.get("/api/controlereidi", ControleREIDIController.read);
+routes.post("/api/controlereidi", ControleREIDIController.create);
+routes.delete("/api/controlereidi/:IDControleREIDI", ControleREIDIController.delete);
+
+
 routes.get("/api/analisereidi", AnaliseREIDIController.read);
 routes.get(
   "/api/controlereidisemvinculo",
