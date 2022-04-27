@@ -64,15 +64,13 @@ module.exports = {
 
   async delete(req, res, next) {
     try {
-      const { IDControleREIDI } = req.params;
+      const { NRProcessoPrincipal } = req.params;
 
-      await extensaoControleDB("TBControleREIDI")
-        .where({ IDControleREIDI })
-        .del();
+      const response = await extensaoControleDB("TBControleREIDI")
+        .where({ NRProcessoPrincipal })
+        .del("*");
 
-      res.status(200).json({
-        message: `O REIDI de ID ${IDControleREIDI} foi excluído com sucesso`,
-      });
+      res.status(200).json(response);
     } catch (error) {
       next(error);
     }

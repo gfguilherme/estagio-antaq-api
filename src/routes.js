@@ -27,14 +27,18 @@ routes.get(
   ContratoArrendamentoController.listByPorto
 );
 
-
 // Controle REIDI
 routes.get("/api/controlereidi", ControleREIDIController.read);
-routes.get("/api/match-rows", ControleREIDIController.matchRows)
+routes.get("/api/match-rows", ControleREIDIController.matchRows);
 routes.post("/api/controlereidi", ControleREIDIController.create);
-routes.put("/api/controlereidi/:IDControleREIDI", ControleREIDIController.update)
-routes.delete("/api/controlereidi/:IDControleREIDI", ControleREIDIController.delete);
-
+routes.put(
+  "/api/controlereidi/:IDControleREIDI",
+  ControleREIDIController.update
+);
+routes.delete(
+  "/api/controlereidi/:NRProcessoPrincipal",
+  ControleREIDIController.delete
+);
 
 routes.get("/api/analisereidi", AnaliseREIDIController.read);
 routes.get(
