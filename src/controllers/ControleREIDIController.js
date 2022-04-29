@@ -1,9 +1,22 @@
 const { extensaoControleDB } = require("../database");
 
 module.exports = {
-  async read(req, res, next) {
+  async index(req, res, next) {
     try {
       const results = await extensaoControleDB("TBControleREIDI");
+
+      res.json(results);
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  async read(req, res, next) {
+    const { NRProcessoPrincipal } = req.params;
+    try {
+      const results = await extensaoControleDB("TBControleREIDI").where({
+        NRProcessoPrincipal,
+      }).first()
 
       res.json(results);
     } catch (error) {

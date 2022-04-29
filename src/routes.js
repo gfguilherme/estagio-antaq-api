@@ -28,7 +28,11 @@ routes.get(
 );
 
 // Controle REIDI
-routes.get("/api/controlereidi", ControleREIDIController.read);
+routes.get("/api/controlereidi", ControleREIDIController.index);
+routes.get(
+  "/api/controlereidi/:NRProcessoPrincipal",
+  ControleREIDIController.read
+);
 routes.get("/api/match-rows", ControleREIDIController.matchRows);
 routes.post("/api/controlereidi", ControleREIDIController.create);
 routes.put(
