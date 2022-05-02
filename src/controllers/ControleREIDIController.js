@@ -18,10 +18,10 @@ module.exports = {
         .where({
           NRProcessoPrincipal,
         })
-        .join("TBAnaliseREIDI", {
+        .fullOuterJoin("TBAnaliseREIDI", {
           "TBControleREIDI.IDControleREIDI": "TBAnaliseREIDI.IDControleREIDI",
         })
-        .join("TBManifestacaoANTAQ", {
+        .fullOuterJoin("TBManifestacaoANTAQ", {
           "TBControleREIDI.IDControleREIDI": "TBManifestacaoANTAQ.IDControleREIDI",
         })
         .first();
