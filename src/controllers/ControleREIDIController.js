@@ -1,4 +1,5 @@
-const { extensaoControleDB } = require("../database");
+const ContratoArrendamentoController = require("./ContratoArrendamentoController");
+const { extensaoControleDB, arrendamentoV2DB } = require("../database");
 
 module.exports = {
   async index(req, res, next) {
@@ -26,7 +27,13 @@ module.exports = {
         })
         .first();
 
-      res.json(results);
+      // União das chamadas ao banco ArrendamentoV2 e ExtensãoControleGPO
+      const mergedResults = {
+        ...results,
+        ...await ContratoArrendamentoController.read(results.IDContratoArrendamento),
+      };
+
+      res.json(mergedResults);
     } catch (error) {
       next(error);
     }

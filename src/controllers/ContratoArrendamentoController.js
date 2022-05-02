@@ -6,16 +6,39 @@ module.exports = {
 
     try {
       const results = await arrendamentoV2DB
-        .select('IDContratoArrendamento', 'CDContrato')
+        .select("IDContratoArrendamento", "CDContrato")
         .from("TBContratoArrendamento")
         .where({
           CDTrigrama,
-          "NRVersao": 1
+          NRVersao: 1,
         });
 
       res.json(results);
     } catch (error) {
       next(error);
+    }
+  },
+  async read(IDContratoArrendamento) {
+    try {
+      const results = await arrendamentoV2DB("TBContratoArrendamento").select(
+        "CDTrigrama",
+        "IDContratoArrendamento",
+        "IDContratoArrendamentoPai",
+        "CDContrato",
+        "NRVersao",
+        "NRCnpj",
+        "NOTipoOutorga",
+        "NOFantasiaEmpresa",
+        "NRCNPJInstalacao",
+        "NOInstalacao",
+      ).where({
+        IDContratoArrendamento,
+      })
+      .first();
+
+      return results;
+    } catch (error) {
+      console.log(error);
     }
   },
 };
