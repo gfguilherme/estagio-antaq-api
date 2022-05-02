@@ -36,7 +36,7 @@ routes.get(
 routes.get("/api/match-rows", ControleREIDIController.matchRows);
 routes.post("/api/controlereidi", ControleREIDIController.create);
 routes.put(
-  "/api/controlereidi/:IDControleREIDI",
+  "/api/controlereidi/:NRProcessoPrincipal",
   ControleREIDIController.update
 );
 routes.delete(

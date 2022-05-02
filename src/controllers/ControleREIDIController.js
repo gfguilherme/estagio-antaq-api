@@ -90,7 +90,7 @@ module.exports = {
   },
   async update(req, res, next) {
     try {
-      const { IDControleREIDI } = req.params;
+      const { NRProcessoPrincipal } = req.params;
       const {
         DTProtocoloPedido,
         VLInvestimentoProposto,
@@ -100,7 +100,7 @@ module.exports = {
       } = req.body;
 
       await extensaoControleDB("TBControleREIDI")
-        .where({ IDControleREIDI })
+        .where({ NRProcessoPrincipal })
         .update({
           DTProtocoloPedido,
           VLInvestimentoProposto,
