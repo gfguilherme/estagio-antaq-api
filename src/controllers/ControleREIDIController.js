@@ -14,9 +14,17 @@ module.exports = {
   async read(req, res, next) {
     const { NRProcessoPrincipal } = req.params;
     try {
-      const results = await extensaoControleDB("TBControleREIDI").where({
-        NRProcessoPrincipal,
-      }).first()
+      const results = await extensaoControleDB("TBControleREIDI")
+        .where({
+          NRProcessoPrincipal,
+        })
+        .join("TBAnaliseREIDI", {
+          "TBControleREIDI.IDControleREIDI": "TBAnaliseREIDI.IDControleREIDI",
+        })
+        .join("TBManifestacaoANTAQ", {
+          "TBControleREIDI.IDControleREIDI": "TBManifestacaoANTAQ.IDControleREIDI",
+        })
+        .first();
 
       res.json(results);
     } catch (error) {
