@@ -25,6 +25,9 @@ module.exports = {
         .fullOuterJoin("TBManifestacaoANTAQ", {
           "TBControleREIDI.IDControleREIDI": "TBManifestacaoANTAQ.IDControleREIDI",
         })
+        .fullOuterJoin("TBEstadoManifestacaoANTAQ", {
+          "TBManifestacaoANTAQ.IDEstadoManifestacaoANTAQ": "TBEstadoManifestacaoANTAQ.IDEstadoManifestacaoANTAQ",
+        })
         .first();
 
       // União das chamadas ao banco ArrendamentoV2 e ExtensãoControleGPO
